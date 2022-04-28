@@ -22,6 +22,18 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 var gridHelper = new THREE.GridHelper( size, divisions );
+
+var loader = new THREE.GLTFLoader();
+ 
+var eagleMod;
+loader.load( 'Models/eagle/scene.gltf', ( gltf ) => {
+    eagleMod = gltf.scene;
+    eagleMod.position.y = 3;
+    eagleMod.position.x = 5
+    scene.add( eagleMod );
+ 
+} );
+
 // scene.add( gridHelper);
 
 // var controls = new THREE.OrbitControls(camera,renderer.domElement);
@@ -44,7 +56,7 @@ scene.add(mesh);
 // scene.add(mesh);
 
 // rotating cube
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+var geometry = new THREE.BoxGeometry(0, 0, 0);
 var material = new THREE.MeshPhongMaterial({color:0xFFCC00});
 var mesh = new THREE.Mesh(geometry,material);
 mesh.position.x = 0;
